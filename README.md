@@ -1,4 +1,4 @@
-# 🚀 Welcome to the Learn ROS 2 Humble Repository! 🌟
+# 🚀 Welcome to the Learn ROS 2 Humble Repository!
 Are you ready to dive into the world of Robotics with ROS 2 Humble? This repository is your ultimate guide to mastering ROS 2, from beginner to advanced concepts! Whether you're just getting started or looking to deepen your knowledge, we’ve got something for everyone.
 
 ## 📚 What You'll Find Here
