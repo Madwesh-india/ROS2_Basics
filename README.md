@@ -39,6 +39,8 @@ Clone this repository to your local machine using the following command:
 ```bash
 git clone https://github.com/your-username/ros2-learning.git
 ```
+## TODO
+You can refer to the [TODO.md](TODO.md) file for guidance on where to start contributing.
 
 ## Repository Structure
 
@@ -49,6 +51,7 @@ ros2-learning/
 │
 ├── README.md                     # This README file
 ├── ShellCommands.md              # Basic shell commands for ROS 2
+├── TODO.md                       # List of thing to implement
 ```
 
 ## Basic ROS 2 Commands
