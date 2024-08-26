@@ -76,7 +76,7 @@ if __name__ == "__main__":
     rclpy.shutdown()
     ```
     
-- **In-depth Explanation:[Setting Up Nodes](#python/node.md)**
+- **In-depth Explanation:[Setting Up Nodes](python/node.md)**
 
 
 ### 2. **Logging Messages**
@@ -87,7 +87,7 @@ Use the `get_logger().info()` method to print logs:
 self.get_logger().info("Logging message here")
 ```
     
-- **In-depth Explanation:[Loggers](#python/logging.md)**
+- **In-depth Explanation:[Loggers](python/logging.md)**
 
 ### 3. **Creating a Timer**
 
@@ -97,7 +97,7 @@ To create a timed event that repeatedly calls a callback function:
 self.create_timer(1.0, self.timer_callback)  # Calls `timer_callback` every 1 second
 ```
     
-- **In-depth Explanation:[Timers](#python/timer.md)**
+- **In-depth Explanation:[Timers](python/timer.md)**
 
 ### 4. **Creating a Publisher**
 
@@ -115,7 +115,7 @@ self.publisher = self.create_publisher(String, "topic_name", 10)
     self.publisher.publish(msg)
     ```
     
-- **In-depth Explanation:[Publishers](#python/Publisher.md)**
+- **In-depth Explanation:[Publishers](python/Publisher.md)**
 
 ### 5. **Creating a Subscriber**
 
@@ -132,7 +132,7 @@ self.subscription = self.create_subscription(String, "topic_name", self.subscrip
         self.get_logger().info(f"Received: {msg.data}")
     ```
     
-- **In-depth Explanation:[Subscribers](#python/Subscriber.md)**
+- **In-depth Explanation:[Subscribers](python/Subscriber.md)**
 
 ### 6. **Creating a Service Client**
 
@@ -165,7 +165,7 @@ self.client = self.create_client(ServiceType, 'service_name')
         self.get_logger().info(f"Service response: {response}")
     ```
     
-- **In-depth Explanation:[Service/Client](#python/Service-Client.md)**
+- **In-depth Explanation:[Service/Client](python/Service-Client.md)**
 
 
 ## Setting Up `setup.py`
@@ -199,6 +199,6 @@ setup(
 )
 ```
     
-- **In-depth Explanation:[Setup](#python/Setup.md)**
+- **In-depth Explanation:[Setup](python/Setup.md)**
 
 > **Note:** `nodeCallName`, `nodeScriptName`, and `nodeDisplayedName` can be the same or different depending on your preference and project requirements.
