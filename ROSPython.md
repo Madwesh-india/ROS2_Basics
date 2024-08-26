@@ -87,7 +87,7 @@ Use the `get_logger().info()` method to print logs:
 self.get_logger().info("Logging message here")
 ```
     
-- **In-depth Explanation:[Loggers](python/logging.md)**
+- **In-depth Explanation:[Loggers](python/Logging.md)**
 
 ### 3. **Creating a Timer**
 
@@ -97,7 +97,7 @@ To create a timed event that repeatedly calls a callback function:
 self.create_timer(1.0, self.timer_callback)  # Calls `timer_callback` every 1 second
 ```
     
-- **In-depth Explanation:[Timers](python/timer.md)**
+- **In-depth Explanation:[Timers](python/Timers.md)**
 
 ### 4. **Creating a Publisher**
 
@@ -115,7 +115,7 @@ self.publisher = self.create_publisher(String, "topic_name", 10)
     self.publisher.publish(msg)
     ```
     
-- **In-depth Explanation:[Publishers](python/Publisher.md)**
+- **In-depth Explanation:[Publishers](python/Subscriber-Publisher.md)**
 
 ### 5. **Creating a Subscriber**
 
@@ -132,7 +132,7 @@ self.subscription = self.create_subscription(String, "topic_name", self.subscrip
         self.get_logger().info(f"Received: {msg.data}")
     ```
     
-- **In-depth Explanation:[Subscribers](python/Subscriber.md)**
+- **In-depth Explanation:[Subscribers](python/Subscriber-Publisher.md)**
 
 ### 6. **Creating a Service Client**
 
