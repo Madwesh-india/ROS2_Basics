@@ -9,14 +9,42 @@ This document provides an overview of essential Python operations, methods, and 
 - [Introduction](#introduction)
 - [Important Python Operations](#important-python-operations)
 - [Node Methods and Functions](#node-methods-and-functions)
-- [Creating a ROS 2 Python Node](#creating-a-ros-2-python-node)
-- [Publisher and Subscriber Example](#publisher-and-subscriber-example)
-- [Service Client Example](#service-client-example)
 - [Setting Up `setup.py`](#setting-up-setuppy)
 
 ## Introduction
 
 In ROS 2, Python is a popular choice for writing nodes and handling various functionalities like publishers, subscribers, and services. This guide provides you with the foundational Python code snippets and workflows needed to get started with ROS 2 development.
+
+
+## ROS 2 Python Workspace Structure
+
+This outlines the typical file structure for a ROS 2 workspace using Python. It includes directories and files essential for building and running ROS 2 nodes, services, and other components.
+
+## Workspace Structure
+
+```
+ros2_ws/                           # Root of the ROS 2 workspace
+├── src/                           # Source directory for ROS 2 packages
+│   ├── my_package/                # Example ROS 2 Python package
+│   │   ├── CMakeLists.txt         # CMake file for colcon build (can be optional for Python packages)
+│   │   ├── package.xml            # Package manifest file with package information
+│   │   ├── setup.py               # Python setup script for installing the package
+│   │   ├── resource/              # Resource directory for additional files
+│   │   ├── launch/                # Launch files directory
+│   │   │   └── example_launch.py  # Example launch file for starting nodes
+│   │   ├── my_package/            # Python module directory (must match package name)
+│   │   │   ├── __init__.py        # Python package initializer
+│   │   │   ├── node_script.py     # Python script for a ROS 2 node
+│   │   ├── test/                  # Directory for test files
+│   │   │   └── test_example.py    # Example test script for unit testing
+│   │   └── README.md              # README file for package description and usage
+├── install/                       # Directory where built packages are installed (created after build)
+├── build/                         # Directory where packages are built (created after build)
+├── log/                           # Directory containing build and run logs (created after build)
+└── colcon.meta                    # Metadata for colcon build system (optional)
+```
+  
+> **Refer:[Setting-up Ros Workspace](Workspace.md)**
 
 ## Important Python Operations
 
