@@ -11,6 +11,7 @@ To run a node from a specific package:
 ```bash
 ros2 run <package_name> <node_name>
 ```
+> Note: Use **ctrl+c** to terminate any terminal execution
 
 To list all active nodes:
 

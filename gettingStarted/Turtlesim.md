@@ -6,19 +6,19 @@ Turtlesim is a simple and fun ROS 2 simulator, perfect for learning the foundati
 
 ## 🐢 What is Turtlesim?  
 
-Turtlesim is a lightweight graphical simulator included with ROS 2. It allows you to interact with a turtle in a virtual environment using ROS concepts. Through Turtlesim, you can learn about:  
+Turtlesim is a lightweight graphical simulator included with ROS 2. It allows you to interact with a turtle in a virtual environment while exploring core ROS 2 concepts, including:  
 - **[Nodes](nodes.md)**: Independent programs that communicate in a ROS 2 system.  
-- **[Topics](topics.md)**: Publish-subscribe communication channels.  
+- **[Topics](topics.md)**: Publish-subscribe communication channels for message exchange.  
 - **[Services](services.md)**: Request-response communication for one-time tasks.  
-- **[Actions](actions.md)**: Goal-oriented asynchronous communication.  
-- **[Parameters](parameters.md)**: Configurations for nodes that can be dynamically modified.
+- **[Actions](actions.md)**: Asynchronous communication for goal-oriented tasks.  
+- **[Parameters](parameters.md)**: Configurable settings for nodes, modifiable at runtime.
 
 ---
 
 ## ⚙️ Installation  
 
 ### Prerequisites  
-Ensure that **ROS 2 Humble** is installed and sourced in your terminal. If not, follow the [ROS 2 Installation Guide](https://docs.ros.org/en/humble/Installation.html).  
+Ensure **ROS 2 Humble** is installed and sourced in your terminal. If not, follow the [ROS 2 Installation Guide](https://docs.ros.org/en/humble/Installation.html).  
 
 ### Installation Command  
 
@@ -35,13 +35,13 @@ sudo apt install ros-humble-turtlesim
 
 ### Step 1: Start the Turtlesim Node  
 
-Run the Turtlesim simulator by executing:  
+Launch the Turtlesim simulator with:  
 
 ```bash
 ros2 run turtlesim turtlesim_node  
 ```  
 
-This opens a graphical window with a turtle in the center of a virtual environment.
+A graphical window with a turtle in the center of a virtual environment will appear.
 
 #### Output:  
 - **Turtlesim Window**  
@@ -49,11 +49,12 @@ This opens a graphical window with a turtle in the center of a virtual environme
 - **Terminal Output**  
   ![Turtlesim Terminal](/gettingStarted/TurtlesimImages/turtlesim_terminal.png "TurtleSimTerminal")
 
+> Note: Use **ctrl+c** to terminate the execution
 ---
 
 ### Step 2: Control the Turtle  
 
-In a new terminal (remember to source ROS 2), run the following command to control the turtle using your keyboard:  
+Open a new terminal (ensure ROS 2 is sourced) and run:  
 
 ```bash
 ros2 run turtlesim turtle_teleop_key  
@@ -70,17 +71,19 @@ Use the **arrow keys** to move the turtle:
 - **Teleop Terminal Output**  
   ![Turtle Teleop Keyboard](/gettingStarted/TurtlesimImages/turtle_teleop_keybord.png "Turtle Teleop Keyboard")
 
+> Note: The conventon of the direction for control is about the **local axis** , not the fixed **global axis**
+
 ---
 
-## 🌟 Understanding Nodes, Topics, Services, and Actions  
+## 🌟 Key ROS 2 Concepts  
 
 ### 🧩 Nodes  
 
-Nodes are independent programs that communicate with each other in ROS 2. In Turtlesim:  
-- **`turtlesim_node`**: Manages the Turtlesim window and updates the turtle’s state.  
-- **`turtle_teleop_key`**: Sends velocity commands to control the turtle’s movement.  
+Nodes are independent programs in ROS 2 that perform specific tasks and communicate with each other. In Turtlesim:  
+- **`turtlesim_node`**: Manages the simulation window and turtle behavior.  
+- **`turtle_teleop_key`**: Sends movement commands to the turtle.  
 
-To list all active nodes, run:  
+List active nodes:  
 ```bash
 ros2 node list
 ```
@@ -89,45 +92,51 @@ ros2 node list
 
 ### 🔗 Topics  
 
-Topics are used for publish-subscribe communication. Nodes publish messages to topics or subscribe to them to receive messages.  
+Topics are publish-subscribe communication channels. Nodes either publish messages to topics or subscribe to receive messages.  
 
 #### Example Topics in Turtlesim:  
-- `/turtle1/cmd_vel`: Receives velocity commands to control the turtle.  
-- `/turtle1/pose`: Publishes the turtle's position and orientation.  
+- `/turtle1/cmd_vel`: Controls the turtle’s movement.  
+- `/turtle1/pose`: Reports the turtle’s position and orientation.  
 
-List all active topics:  
+List active topics:  
 ```bash
 ros2 topic list
 ```
 
-#### Example Output:  
-```bash
-/parameter_events
-/rosout
-/turtle1/cmd_vel
-/turtle1/color_sensor
-/turtle1/pose
-```
-
-You can inspect messages on a topic:  
+Inspect messages on a topic:  
 ```bash
 ros2 topic echo /turtle1/pose
 ```
+> Note: Use **ctrl+c** to terminate the execution
+
+### Visualizing Topics with `rqt_graph`  
+
+#### Install `rqt`:  
+```bash
+sudo apt install ros-humble-rqt*
+```
+
+#### Launch `rqt_graph`:  
+```bash
+rqt_graph
+```
+
+The graph will display nodes and topics, showing their interactions.
 
 ---
 
 ### ⚙️ Services  
 
-Services enable one-to-one request-response communication for tasks. Turtlesim provides several services to control its behavior, such as:  
-- **`/clear`**: Clears the turtle's trail.  
-- **`/spawn`**: Creates a new turtle at a specified position.  
+Services enable request-response communication. For example:  
+- **`/clear`**: Clears the turtle’s trail.  
+- **`/spawn`**: Spawns a new turtle at a specified location.  
 
-List all available services:  
+List available services:  
 ```bash
 ros2 service list
 ```
 
-Call a service (e.g., clearing the screen):  
+Call a service to clear the screen:  
 ```bash
 ros2 service call /clear std_srvs/srv/Empty
 ```
@@ -136,106 +145,62 @@ ros2 service call /clear std_srvs/srv/Empty
 
 ### 🎯 Actions  
 
-Actions enable goal-oriented, asynchronous tasks that can provide feedback and be canceled mid-execution. While Turtlesim does not directly include actions, they are common in advanced robotics (e.g., moving a robot to a location).  
+Actions enable asynchronous tasks with feedback and cancel options. While Turtlesim doesn't have built-in actions, they are used in tasks like robot navigation.  
 
-To explore actions in other examples, check out:  
-[ROS 2 Humble Actions Guide](https://docs.ros.org/en/humble/Tutorials/Actions/Understanding-Actions.html).
-
----
-
-## 🔗 Exploring Topics with `rqt_graph`  
-
-### Step 1: Install `rqt`  
-
-To visualize ROS communication, install `rqt` and its plugins:  
-
-```bash
-sudo apt install ros-humble-rqt*
-```
-
-### Step 2: Launch `rqt_graph`  
-
-Run the following command to visualize active nodes and topics:  
-
-```bash
-rqt_graph
-```
-
-The graph will show how nodes interact through topics like `/turtle1/cmd_vel` and `/turtle1/pose`.
-
-#### Example Graph:  
-![rqt_graph Example](/gettingStarted/TurtlesimImages/rqt_graph_example.png "rqt_graph Example")
+Explore actions in ROS 2:  
+[ROS 2 Actions Guide](https://docs.ros.org/en/humble/Tutorials/Actions/Understanding-Actions.html).
 
 ---
 
-## 🛠️ Using `rqt`  
+### ⚙️ Parameters  
 
-`rqt` is a GUI-based toolset for interacting with ROS 2. It provides features such as topic monitoring, parameter editing, and node introspection.  
+Parameters are runtime configurations for nodes. Modify parameters like the background color in Turtlesim.  
 
-### Launch `rqt`  
-
-Run the following command to start the `rqt` GUI:  
-```bash
-rqt
-```
-
-You can explore plugins such as:  
-- **Topics**: Monitor topic data.  
-- **Parameters**: View and edit parameters dynamically.  
-
-**Call a service in rqt:**  
-1) Open rqt and Navigate to **`Plugin -> Services -> Service Caller`**  in the top bar
-2) Select the service `/clear`
-3) Press `Call` button
-
-#### Example Graph:  
-![rqt Example](/gettingStarted/TurtlesimImages/rqt_example.png "rqt Example")
-
-> Note: Equivalent command line
-> ```bash
-> ros2 service call /clear std_srvs/srv/Empty
-> ```
-
----
-
-## ⚙️ Parameters  
-
-Parameters in ROS 2 allow you to configure nodes at runtime. For example, in Turtlesim, you can modify the background color dynamically.
-
-### Step 1: List Available Parameters  
-
-To see all parameters for the `turtlesim_node`:  
+#### List Parameters:  
 ```bash
 ros2 param list /turtlesim
 ```
 
-### Step 2: Get a Parameter Value  
-
-Check the current background color:  
+#### Get Parameter Value:  
 ```bash
 ros2 param get /turtlesim background_r
 ```
 
-### Step 3: Set a Parameter  
-
-Change the background color to blue:  
+#### Set Parameter:  
 ```bash
 ros2 param set /turtlesim background_b 255
 ```
 
-To apply changes, call the `/clear` service:  
+Apply changes with:  
 ```bash
 ros2 service call /clear std_srvs/srv/Empty
 ```
 
 ---
 
+## 🛠️ Using `rqt`  
+
+Launch the `rqt` GUI to monitor topics, call services, or edit parameters:  
+```bash
+rqt
+```
+
+#### Example: Call the `/clear` service  
+1. Navigate to **Plugins → Services → Service Caller**.  
+2. Select `/clear`.  
+3. Click **Call**.  
+
+![rqt Example](/gettingStarted/TurtlesimImages/rqt_example.png "rqt Example")
+
+---
+
 ## 🌟 Next Steps  
 
-Now that you’ve explored Turtlesim, dive deeper into the core ROS 2 concepts:  
-1. Learn how to write custom nodes in the [Nodes Guide](nodes.md).  
-2. Publish and subscribe to topics with the [Topics Guide](topics.md).  
-3. Call and create services in the [Services Guide](services.md).  
-4. Explore goal-oriented tasks with the [Actions Guide](actions.md).  
+**Controling Turtle through terminal commands: [TerminalTurtle.md](TerminalTurtle.md)**
+
+Dive deeper into ROS 2 concepts: 
+- Explore [Nodes](nodes.md) and [Topics](topics.md).  
+- Work with [Services](services.md) and [Actions](actions.md).  
+- Experiment with dynamic [Parameters](parameters.md).  
 
 Happy learning! 🐢
