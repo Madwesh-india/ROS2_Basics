@@ -81,7 +81,7 @@ def main(args=None):
 if __name__ == "__main__":
     main()                                    # Entry point for the node script
 ```
-
+> **Note:** For further information [PythonNode.md](PythonNode.md).
 ## Setting Up `setup.py`
 
 To ensure your Python nodes are executable, you must modify the `setup.py` file in your ROS 2 package:
