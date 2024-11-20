@@ -1,18 +1,17 @@
 # 🐢 Getting Started with Turtlesim  
 
-Turtlesim is a simple and fun ROS 2 simulator, perfect for learning the foundational concepts of ROS, such as nodes, topics, services, and actions. This guide provides an overview of Turtlesim, installation instructions, and a walkthrough on running and interacting with it.
+Turtlesim is a simple and fun ROS 2 simulator, perfect for learning the foundational concepts of ROS, such as nodes, topics, services, actions, and parameters. This guide provides an overview of Turtlesim, installation instructions, and a walkthrough on running and interacting with it.
 
 ---
 
 ## 🐢 What is Turtlesim?  
 
 Turtlesim is a lightweight graphical simulator included with ROS 2. It allows you to interact with a turtle in a virtual environment using ROS concepts. Through Turtlesim, you can learn about:  
-- **Nodes**: Independent programs that communicate in a ROS 2 system.  
-- **Topics**: Publish-subscribe communication channels.  
-- **Services**: Request-response communication for one-time tasks.  
-- **Actions**: Goal-oriented asynchronous communication.
-
-Turtlesim is the ideal starting point for understanding these core concepts in an interactive and beginner-friendly way.
+- **[Nodes](nodes.md)**: Independent programs that communicate in a ROS 2 system.  
+- **[Topics](topics.md)**: Publish-subscribe communication channels.  
+- **[Services](services.md)**: Request-response communication for one-time tasks.  
+- **[Actions](actions.md)**: Goal-oriented asynchronous communication.  
+- **[Parameters](parameters.md)**: Configurations for nodes that can be dynamically modified.
 
 ---
 
@@ -144,11 +143,99 @@ To explore actions in other examples, check out:
 
 ---
 
-### Next Steps  
+## 🔗 Exploring Topics with `rqt_graph`  
 
-Turtlesim is a great way to learn ROS 2 fundamentals. From here, you can:  
-1. Write custom nodes to publish commands to the `/turtle1/cmd_vel` topic.  
-2. Experiment with creating new turtles using the `/spawn` service.  
-3. Explore how to subscribe to the `/turtle1/pose` topic to track the turtle’s movement.
+### Step 1: Install `rqt`  
+
+To visualize ROS communication, install `rqt` and its plugins:  
+
+```bash
+sudo apt install ros-humble-rqt*
+```
+
+### Step 2: Launch `rqt_graph`  
+
+Run the following command to visualize active nodes and topics:  
+
+```bash
+rqt_graph
+```
+
+The graph will show how nodes interact through topics like `/turtle1/cmd_vel` and `/turtle1/pose`.
+
+#### Example Graph:  
+![rqt_graph Example](/gettingStarted/TurtlesimImages/rqt_graph_example.png "rqt_graph Example")
+
+---
+
+## 🛠️ Using `rqt`  
+
+`rqt` is a GUI-based toolset for interacting with ROS 2. It provides features such as topic monitoring, parameter editing, and node introspection.  
+
+### Launch `rqt`  
+
+Run the following command to start the `rqt` GUI:  
+```bash
+rqt
+```
+
+You can explore plugins such as:  
+- **Topics**: Monitor topic data.  
+- **Parameters**: View and edit parameters dynamically.  
+
+**Call a service in rqt:**  
+1) Open rqt and Navigate to **`Plugin -> Services -> Service Caller`**  in the top bar
+2) Select the service `/clear`
+3) Press `Call` button
+
+#### Example Graph:  
+![rqt Example](/gettingStarted/TurtlesimImages/rqt_example.png "rqt Example")
+
+> Note: Equivalent command line
+> ```bash
+> ros2 service call /clear std_srvs/srv/Empty
+> ```
+
+---
+
+## ⚙️ Parameters  
+
+Parameters in ROS 2 allow you to configure nodes at runtime. For example, in Turtlesim, you can modify the background color dynamically.
+
+### Step 1: List Available Parameters  
+
+To see all parameters for the `turtlesim_node`:  
+```bash
+ros2 param list /turtlesim
+```
+
+### Step 2: Get a Parameter Value  
+
+Check the current background color:  
+```bash
+ros2 param get /turtlesim background_r
+```
+
+### Step 3: Set a Parameter  
+
+Change the background color to blue:  
+```bash
+ros2 param set /turtlesim background_b 255
+```
+
+To apply changes, call the `/clear` service:  
+```bash
+ros2 service call /clear std_srvs/srv/Empty
+```
+
+---
+
+## 🌟 Next Steps  
+
+Now that you’ve explored Turtlesim, dive deeper into the core ROS 2 concepts:  
+1. Learn how to write custom nodes in the [Nodes Guide](nodes.md).  
+2. Publish and subscribe to topics with the [Topics Guide](topics.md).  
+3. Call and create services in the [Services Guide](services.md).  
+4. Explore goal-oriented tasks with the [Actions Guide](actions.md).  
 
 Happy learning! 🐢
