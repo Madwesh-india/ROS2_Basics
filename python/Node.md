@@ -1,4 +1,4 @@
-# nodes.md
+# Nodes.md
 
 ## Overview of Nodes and `rclpy` in ROS 2
 

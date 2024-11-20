@@ -51,7 +51,7 @@ The repository is organized as follows:
 ros2-learning/
 │
 ├── src/
-│   ├── node.md
+│   ├── Node.md
 ├── README.md                     # This README file
 ├── ShellCommands.md              # Basic shell commands for ROS 2
 ├── TODO.md                       # List of thing to implement
@@ -65,7 +65,7 @@ To help you get started with ROS 2, refer to the [ShellCommands.md](ShellCommand
 
 ## Basic ROS 2 Python Methods
 
-To help you get started with ROS 2 programming in Python, refer to the [ROSPython.md](ROSPython.md) file for a list of essential Python methods, including how to create nodes, handle publishers and subscribers, and manage services and timers in ROS 2.
+To help you get started with ROS 2 programming in Python, refer to the [python/ROS2Python.md](python/ROS2Python.md) file for a list of essential Python methods, including how to create nodes, handle publishers and subscribers, and manage services and timers in ROS 2.
 
 ## Contributing
 

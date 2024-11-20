@@ -104,7 +104,7 @@ if __name__ == "__main__":
     rclpy.shutdown()
     ```
     
-- **In-depth Explanation:[Setting Up Nodes](python/node.md)**
+- **In-depth Explanation:[Setting Up Nodes](python/Node.md)**
 
 
 ### 2. **Logging Messages**
