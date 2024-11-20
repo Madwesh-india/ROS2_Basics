@@ -37,25 +37,6 @@ def main(args=args):
   rclpy.shutdown()
 ```
 
-## Core Methods of the `Node` Class
-
-The `Node` class in ROS 2 provides a variety of methods to handle different functionalities. Below are some of the core methods:
-
-### 1. **Node Initialization and Shutdown**
-
-- **`__init__(self, name: str, *, namespace: str = '')`**: Constructor method to initialize a new node with a given name.
-  
-- **`destroy_node(self)`**: Cleanly destroy the node and release resources.
-
-### 2. **Logging**
-
-- **`get_logger(self) -> Logger`**: Returns a logger instance that you can use to log messages. 
-
-    ```python
-    self.get_logger().info('This is an informational message.')
-    ```
-> **For detailed examples on services and clients, see the [Logging Guide](python/Logging.md).**
-
 ## Creating a Custom Node
 
 To create a custom node, extend the `Node` class and utilize its methods to implement the desired functionality. Here's an example of a custom node that publishes messages and logs information:
@@ -88,7 +69,102 @@ if __name__ == '__main__':
     main()
 ```
 
+## Core Methods of the `Node` Class
 
+The `Node` class in ROS 2 provides a variety of methods to handle different functionalities. Below are some of the core methods:
+
+### 1. **Node Initialization and Shutdown**
+
+- **`__init__(self, name: str, *, namespace: str = '')`**: Constructor method to initialize a new node with a given name.
+  
+- **`destroy_node(self)`**: Cleanly destroy the node and release resources.
+
+### 2. **Logging**
+
+- **`get_logger(self) -> Logger`**: Returns a logger instance that you can use to log messages. 
+
+    ```python
+    self.get_logger().info('This is an informational message.')
+    ```
+- **For detailed examples on logging, see the [Logging Guide](python/Logging.md).**
+
+### 3. **Creating a Timer**
+
+To create a timed event that repeatedly calls a callback function:
+
+```python
+self.create_timer(1.0, self.timer_callback)  # Calls `timer_callback` every 1 second
+```
+    
+- **In-depth Explanation:[Timers](python/Timers.md)**
+
+### 4. **Creating a Publisher**
+
+To create a publisher for a specific message type:
+
+```python
+self.publisher = self.create_publisher(String, "topic_name", 10)
+```
+
+- **Publishing a Message:**
+
+    ```python
+    msg = String()
+    msg.data = "Hello, ROS 2!"
+    self.publisher.publish(msg)
+    ```
+    
+- **In-depth Explanation:[Publishers](python/Subscriber-Publisher.md)**
+
+### 5. **Creating a Subscriber**
+
+To create a subscriber that listens to a specific topic:
+
+```python
+self.subscription = self.create_subscription(String, "topic_name", self.subscription_callback, 10)
+```
+
+- **Callback Function for Subscriber:**
+
+    ```python
+    def subscription_callback(self, msg):
+        self.get_logger().info(f"Received: {msg.data}")
+    ```
+    
+- **In-depth Explanation:[Subscribers](python/Subscriber-Publisher.md)**
+
+### 6. **Creating a Service Client**
+
+To create a client for calling a ROS 2 service:
+
+```python
+self.client = self.create_client(ServiceType, 'service_name')
+```
+
+- **Waiting for the Service:**
+
+    ```python
+    while not self.client.wait_for_service(timeout_sec=1.0):
+        self.get_logger().warn("Service not available, waiting...")
+    ```
+
+- **Creating a Request and Calling the Service:**
+
+    ```python
+    request = ServiceType.Request()
+    future = self.client.call_async(request)
+    future.add_done_callback(self.service_response_callback)
+    ```
+
+- **Callback Function for Service Response:**
+
+    ```python
+    def service_response_callback(self, future):
+        response = future.result()
+        self.get_logger().info(f"Service response: {response}")
+    ```
+    
+- **In-depth Explanation:[Service/Client](python/Service-Client.md)**
 
 ## Redirects to Important Topics
 
