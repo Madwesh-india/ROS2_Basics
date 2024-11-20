@@ -20,7 +20,7 @@ To create and build this ROS 2 workspace:
    ```bash
    ros2 pkg create <pakageName> --build-type ament_python --dependencies rclpy
    ```
-   > **Note:** Follow [python/ROS2Python.md](python/ROS2Python.md) to create the executable node_script
+   > **Note:** Follow [ROS2Python.md](ROS2Python.md) to create the executable node_script
    
    ```bash
    cd ..
