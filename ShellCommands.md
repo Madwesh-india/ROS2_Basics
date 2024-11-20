@@ -9,7 +9,7 @@ This document provides a list of essential shell commands for working with ROS 2
 To run a node from a specific package:
 
 ```bash
-ros2 run <package_name> <node_name>
+ros2 run <package_name> <executable_name>
 ```
 
 To list all active nodes:
