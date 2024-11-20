@@ -2,7 +2,8 @@
 
 ## Basic Python Workflow and Code Examples in ROS 2
 
-This document provides an overview of essential Python operations, methods, and coding practices for developing with ROS 2 (Robot Operating System 2). It includes examples of creating nodes, managing publishers and subscribers, handling services, and setting up your package with Python scripts.
+This document provides an overview of essential Python operations, methods, and coding practices for developing with ROS 2 (Robot Operating System 2). 
+It includes examples of creating nodes, managing publishers and subscribers, handling services, and setting up your package with Python scripts.
 
 ### Table of Contents
 
