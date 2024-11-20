@@ -66,6 +66,14 @@ git clone https://github.com/Madwesh-india/ROS2_Basics.git
 ---
 
 ## Cheat Sheets
+### 🖥️ Basic Linux Commands for ROS 2  
+
+For a detailed guide on essential Linux commands for ROS 2 development, check out the [BasicLinuxCommands.md](/BasicLinuxCommands.md) file. This guide includes how to:  
+
+- Navigate and manage directories.  
+- Search and view files.  
+- Handle file permissions.  
+- Use Linux commands in combination with ROS 2 workflows, such as building workspaces and sourcing environments.  
 
 ### Basic ROS 2 Commands  
 Get familiar with essential ROS 2 shell commands by checking out the [ShellCommands.md](ShellCommands.md) file. Learn how to:  
