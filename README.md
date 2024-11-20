@@ -38,7 +38,7 @@ For detailed installation instructions, please refer to the [ROS 2 Installation 
 Clone this repository to your local machine using the following command:
 
 ```bash
-git clone https://github.com/your-username/ros2-learning.git
+git clone https://github.com/Madwesh-india/ROS2_Basics.git
 ```
 ## TODO
 You can refer to the [TODO.md](TODO.md) file for guidance on where to start contributing.
@@ -50,9 +50,12 @@ The repository is organized as follows:
 ```
 ros2-learning/
 │
+├── src/
+│   ├── node.md
 ├── README.md                     # This README file
 ├── ShellCommands.md              # Basic shell commands for ROS 2
 ├── TODO.md                       # List of thing to implement
+├── Workspace.md                       # List of thing to implement
 ```
 
 ## Basic ROS 2 Commands
